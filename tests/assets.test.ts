@@ -101,7 +101,7 @@ describe('generateAssets', () => {
     }
   });
 
-  it('generates Wide310x150Logo from square icon using jimp', async () => {
+  it('generates Wide310x150Logo from square icon using image-js', async () => {
     const projectRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'tauri-project-'));
     const iconsDir = path.join(projectRoot, 'src-tauri', 'icons');
     fs.mkdirSync(iconsDir, { recursive: true });

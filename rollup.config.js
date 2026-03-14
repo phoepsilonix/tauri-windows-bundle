@@ -9,7 +9,7 @@ export default [
       format: 'es',
     },
     plugins: [resolve(), typescript({ declaration: true, declarationDir: 'dist' })],
-    external: ['commander', 'glob', 'jimp', 'fs', 'path', 'child_process', 'url'],
+    external: ['commander', 'glob', 'image-js', 'fs', 'path', 'child_process', 'url'],
   },
   {
     input: 'src/cli.ts',
@@ -19,6 +19,6 @@ export default [
       banner: '#!/usr/bin/env node',
     },
     plugins: [resolve(), typescript()],
-    external: ['commander', 'glob', 'jimp', 'fs', 'path', 'child_process', 'url'],
+    external: ['commander', 'glob', 'image-js', 'fs', 'path', 'child_process', 'url'],
   },
 ];

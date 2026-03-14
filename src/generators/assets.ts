@@ -1,6 +1,6 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
-import { Jimp } from 'jimp';
+import { Image, read, write } from 'image-js';
 import { MSIX_ASSETS } from '../types.js';
 
 // Map MSIX asset names to Tauri icon names
@@ -68,15 +68,15 @@ async function generateWideTile(tauriIconsDir: string, outputPath: string): Prom
     const iconPath = path.join(tauriIconsDir, iconName);
     if (fs.existsSync(iconPath)) {
       try {
-        const image = await Jimp.read(iconPath);
+        const image = await read(iconPath);
         const iconSize = 150; // Height of the wide tile
-        const resized = image.clone().resize({ w: iconSize, h: iconSize });
+        const resized = image.resize({ width: iconSize, height: iconSize });
 
-        // Create 310x150 canvas with transparent background
-        const canvas = new Jimp({ width: 310, height: 150, color: 0x00000000 });
+        // Create 310x150 canvas with transparent background (RGBA)
+        const canvas = new Image(310, 150, { colorModel: 'RGBA' });
         const x = Math.floor((310 - iconSize) / 2);
-        canvas.composite(resized, x, 0);
-        await canvas.write(outputPath as `${string}.${string}`);
+        resized.copyTo(canvas, { origin: { column: x, row: 0 } });
+        await write(outputPath, canvas);
         return true;
       } catch {
         // Try next icon
