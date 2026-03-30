@@ -47,6 +47,7 @@
     "makepri",
     "priconfig",
     "multiarch",
+    "gnu",
     "msvc",
     "rustup",
     "archs",

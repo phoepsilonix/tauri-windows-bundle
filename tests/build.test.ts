@@ -87,7 +87,8 @@ describe('build command', () => {
     generateManifestTemplate(windowsDir);
 
     // Create build output
-    const buildDir = path.join(tempDir, 'src-tauri', 'target', 'x86_64-pc-windows-msvc', 'release');
+    //const buildDir = path.join(tempDir, 'src-tauri', 'target', 'x86_64-pc-windows-msvc', 'release');
+    const buildDir = path.join(tempDir, 'src-tauri', 'target', 'x86_64-pc-windows-gnu', 'release');
     fs.mkdirSync(buildDir, { recursive: true });
     fs.writeFileSync(path.join(buildDir, 'TestApp.exe'), 'mock exe');
 
@@ -221,7 +222,8 @@ describe('build command', () => {
 
     process.chdir(originalCwd);
     expect(execWithProgress).toHaveBeenCalledWith(
-      expect.stringContaining('x86_64-pc-windows-msvc'),
+      //expect.stringContaining('x86_64-pc-windows-msvc'),
+      expect.stringContaining('x86_64-pc-windows-gnu'),
       expect.any(Object)
     );
   });
@@ -233,7 +235,8 @@ describe('build command', () => {
       tempDir,
       'src-tauri',
       'target',
-      'aarch64-pc-windows-msvc',
+      //'aarch64-pc-windows-msvc',
+      'aarch64-pc-windows-gnu',
       'release'
     );
     fs.mkdirSync(buildDir, { recursive: true });
@@ -250,7 +253,8 @@ describe('build command', () => {
 
     process.chdir(originalCwd);
     expect(execWithProgress).toHaveBeenCalledWith(
-      expect.stringContaining('aarch64-pc-windows-msvc'),
+      //expect.stringContaining('aarch64-pc-windows-msvc'),
+      expect.stringContaining('aarch64-pc-windows-gnu'),
       expect.any(Object)
     );
   });
@@ -538,7 +542,8 @@ describe('build command', () => {
       })
     );
 
-    const buildDir = path.join(srcTauri, 'target', 'x86_64-pc-windows-msvc', 'release');
+    //const buildDir = path.join(srcTauri, 'target', 'x86_64-pc-windows-msvc', 'release');
+    const buildDir = path.join(srcTauri, 'target', 'x86_64-pc-windows-gnu', 'release');
     fs.mkdirSync(buildDir, { recursive: true });
     fs.writeFileSync(path.join(buildDir, 'App.exe'), 'mock exe');
 
@@ -584,7 +589,8 @@ describe('build command', () => {
       })
     );
 
-    const buildDir = path.join(srcTauri, 'target', 'x86_64-pc-windows-msvc', 'release');
+    //const buildDir = path.join(srcTauri, 'target', 'x86_64-pc-windows-msvc', 'release');
+    const buildDir = path.join(srcTauri, 'target', 'x86_64-pc-windows-gnu', 'release');
     fs.mkdirSync(buildDir, { recursive: true });
     fs.writeFileSync(path.join(buildDir, 'TestApp.exe'), 'mock exe');
 
@@ -630,7 +636,8 @@ describe('build command', () => {
       })
     );
 
-    const buildDir = path.join(srcTauri, 'target', 'x86_64-pc-windows-msvc', 'release');
+    //const buildDir = path.join(srcTauri, 'target', 'x86_64-pc-windows-msvc', 'release');
+    const buildDir = path.join(srcTauri, 'target', 'x86_64-pc-windows-gnu', 'release');
     fs.mkdirSync(buildDir, { recursive: true });
     fs.writeFileSync(path.join(buildDir, 'TestApp.exe'), 'mock exe');
 
@@ -670,7 +677,8 @@ describe('build command', () => {
       })
     );
 
-    const buildDir = path.join(srcTauri, 'target', 'x86_64-pc-windows-msvc', 'release');
+    //const buildDir = path.join(srcTauri, 'target', 'x86_64-pc-windows-msvc', 'release');
+    const buildDir = path.join(srcTauri, 'target', 'x86_64-pc-windows-gnu', 'release');
     fs.mkdirSync(buildDir, { recursive: true });
     fs.writeFileSync(path.join(buildDir, 'TestApp.exe'), 'mock exe');
 
@@ -906,7 +914,8 @@ describe('build command', () => {
     );
 
     // Create exe with the overridden name (WindowsApp.exe instead of TestApp.exe)
-    const buildDir = path.join(srcTauri, 'target', 'x86_64-pc-windows-msvc', 'release');
+    //const buildDir = path.join(srcTauri, 'target', 'x86_64-pc-windows-msvc', 'release');
+    const buildDir = path.join(srcTauri, 'target', 'x86_64-pc-windows-gnu', 'release');
     fs.writeFileSync(path.join(buildDir, 'WindowsApp.exe'), 'mock exe');
 
     const originalCwd = process.cwd();

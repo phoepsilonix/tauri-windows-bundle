@@ -12,7 +12,8 @@ export function prepareAppxContent(
   minVersion: string,
   windowsDir: string
 ): string {
-  const target = arch === 'x64' ? 'x86_64-pc-windows-msvc' : 'aarch64-pc-windows-msvc';
+  //const target = arch === 'x64' ? 'x86_64-pc-windows-msvc' : 'aarch64-pc-windows-msvc';
+  const target = arch === 'x64' ? 'x86_64-pc-windows-gnu' : 'aarch64-pc-windows-gnu';
   const srcTauriDir = path.join(projectRoot, 'src-tauri');
   const buildDir = path.join(srcTauriDir, 'target', target, 'release');
   const appxDir = path.join(srcTauriDir, 'target', 'appx', arch);

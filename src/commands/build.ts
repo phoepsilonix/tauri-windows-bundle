@@ -122,7 +122,8 @@ export async function build(options: BuildOptions): Promise<void> {
 
   for (const arch of architectures) {
     // Build Tauri app
-    const target = arch === 'x64' ? 'x86_64-pc-windows-msvc' : 'aarch64-pc-windows-msvc';
+    // const target = arch === 'x64' ? 'x86_64-pc-windows-msvc' : 'aarch64-pc-windows-msvc';
+    const target = arch === 'x64' ? 'x86_64-pc-windows-gnu' : 'aarch64-pc-windows-gnu';
     // Tauri CLI defaults to release mode, use --debug for debug builds
     const debugFlag = options.debug ? '--debug' : '';
 
